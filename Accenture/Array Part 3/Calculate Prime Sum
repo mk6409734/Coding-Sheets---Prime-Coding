@@ -1,0 +1,37 @@
+Problem Statement: Calculate Prime Sum
+Implement the function:
+Int CalculatePrimeSum(int m, int n);
+Calculate and return the sum of prime numbers between 'm' and 'n' (inclusive).
+Note: 0 < m <= n
+Example:
+Input:
+m : 10
+n : 50
+Output:
+311
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def calculate_prime_sum(m, n):
+    prime_sum = 0
+    for num in range(m, n + 1):
+        if is_prime(num):
+            prime_sum += num
+    return prime_sum
+
+# Example usage:
+m = 10
+n = 50
+print(calculate_prime_sum(m, n))  # Output should be 311
