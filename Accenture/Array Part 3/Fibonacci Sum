@@ -1,0 +1,33 @@
+Implement the function:
+Int FibonacciSum(int m, int n);
+Calculate and return the sum of Fibonacci numbers in the range from 'm' to 'n' (inclusive).
+Note: 0 < m <= n
+Example:
+Input:
+m : 5
+n : 20
+Output:
+26
+
+def fibonacci_sum(m, n):
+    def fibonacci_numbers_up_to(n):
+        fib_nums = [0, 1]
+        while True:
+            next_fib = fib_nums[-1] + fib_nums[-2]
+            if next_fib > n:
+                break
+            fib_nums.append(next_fib)
+        return fib_nums
+
+    # Generate Fibonacci numbers up to n
+    fib_nums = fibonacci_numbers_up_to(n)
+
+    # Sum the Fibonacci numbers in the range [m, n]
+    fib_sum = sum(f for f in fib_nums if f >= m)
+    
+    return fib_sum
+
+# Example usage:
+m = 5
+n = 20
+print(fibonacci_sum(m, n))  # Output should be 26
