@@ -1,0 +1,31 @@
+Implement the function:
+Int ReverseAndAdd(int m, int n);
+Calculate and return the sum of numbers obtained by reversing the digits of each number in the
+range from 'm' to 'n' (inclusive).
+Note: 0 < m <= n
+Example:
+Input:
+m : 21
+n : 35
+Output:
+636
+
+def reverse_number(num):
+    reversed_num = 0
+    while num > 0:
+        reversed_num = reversed_num * 10 + num % 10
+        num //= 10
+    return reversed_num
+
+def reverse_and_add(m, n):
+    total_sum = 0
+    
+    for num in range(m, n + 1):
+        total_sum += reverse_number(num)
+    
+    return total_sum
+
+# Example usage:
+m = 21
+n = 35
+print(reverse_and_add(m, n))  # Output should be 636
