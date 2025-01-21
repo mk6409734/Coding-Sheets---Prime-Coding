@@ -1,0 +1,31 @@
+Implement the function:
+Int SquareRootDifference(int m, int n);
+Calculate and return the difference between the sum of square roots of even numbers and the
+sum of square roots of odd numbers in the range from 'm' to 'n' (inclusive).
+Note: 0 < m <= n
+Example:
+Input:
+m : 1
+n : 10
+Output:
+1.2405379939375845
+
+import math
+
+def square_root_difference(m, n):
+    sum_even_roots = 0
+    sum_odd_roots = 0
+
+    for num in range(m, n + 1):
+        sqrt_num = math.sqrt(num)
+        if num % 2 == 0:
+            sum_even_roots += sqrt_num
+        else:
+            sum_odd_roots += sqrt_num
+
+    return sum_even_roots - sum_odd_roots
+
+# Example usage:
+m = 1
+n = 10
+print(square_root_difference(m, n))  # Output should be 1.2405379939375845
