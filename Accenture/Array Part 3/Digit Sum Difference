@@ -1,0 +1,36 @@
+Digit Sum Difference
+Implement the function:
+Int DigitSumDifference(int m, int n);
+Calculate and return the absolute difference between the sum of digits of numbers divisible by 4
+and the sum of digits of numbers divisible by 7, in the range from 'm' to 'n' (inclusive).
+Note: 0 < m <= n
+Example:
+Input:
+m : 50
+n : 120
+Output:
+61
+
+def sum_of_digits(num):
+    result = 0
+    while num > 0:
+        result += num % 10
+        num //= 10
+    return result
+
+def digit_sum_difference(m, n):
+    sum_div_4 = 0
+    sum_div_7 = 0
+
+    for num in range(m, n + 1):
+        if num % 4 == 0:
+            sum_div_4 += sum_of_digits(num)
+        if num % 7 == 0:
+            sum_div_7 += sum_of_digits(num)
+
+    return abs(sum_div_4 - sum_div_7)
+
+# Example usage:
+m = 50
+n = 120
+print(digit_sum_difference(m, n))  # Output should be 61
