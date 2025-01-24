@@ -1,0 +1,29 @@
+Question:
+The function accepts two positive integers 'r' and 'unit' and a positive integer array 'arr' of size 'n' as its argument 'r' represents the number of rats present in an area,'unit' is the amount of food each rat consumes and each ith element of array 'arr' represents the amount of food present in 'i+l' house number, where O i. Note Return -1 if the array is null. Return O if the total amount of food from all houses is not sufficient for all the rats. Computed values lie within the integer range. Example Input: unit: 2 arr: 28357412 Output: 4
+
+  def minimum_houses_for_rats(r, unit, arr):
+    # Check if the array is None
+    if arr is None:
+        return -1
+    
+    total_food_required = r * unit  # Total food required by all rats
+    total_food_collected = 0  # Total food collected so far
+    houses_count = 0  # Number of houses visited
+    
+    # Iterate over the array to collect food until the requirement is met
+    for food in arr:
+        total_food_collected += food
+        houses_count += 1
+        if total_food_collected >= total_food_required:
+            return houses_count
+    
+    # If total food collected is less than required, return 0
+    return 0
+
+# Example usage
+if __name__ == "__main__":
+    unit = 2
+    arr = [2, 8, 3, 5, 7, 4, 1, 2]
+    r = 7
+    result = minimum_houses_for_rats(r, unit, arr)
+    print(f"Output: {result}")  # Output: 4
