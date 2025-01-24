@@ -1,0 +1,29 @@
+Question
+The Binary number system only uses two digits, 0 and 1 and the number system can be called binary string. You are required to implement the following function: int OperationsBinaryString(char* str); The function accepts a string str as its argument. The string str consists of binary digits separated with an alphabet as follows: – A denotes AND operation – B denotes OR operation – C denotes XOR Operation You are required to calculate the result of the string str, scanning the string to right taking one operation at a time, and return the same. Note : No order of priorities of operations is required Length of str is odd. If str is NULL or None (in case of Python), return -1 Input: 1C0C1C1A0B1 Output: 1
+
+def operations_binary_string(s):
+    if s is None or len(s) == 0:
+        return -1
+
+    result = int(s[0])  # Initialize the result with the first binary digit
+
+    for i in range(1, len(s), 2):
+        operation = s[i]    # The operation character
+        next_digit = int(s[i + 1])  # The next binary digit
+
+        if operation == 'A':
+            result &= next_digit
+        elif operation == 'B':
+            result |= next_digit
+        elif operation == 'C':
+            result ^= next_digit
+        else:
+            return -1  # Invalid operation character
+
+    return result
+
+# Example usage
+if __name__ == "__main__":
+    s = "1C0C1C1A0B1"
+    result = operations_binary_string(s)
+    print(f"Output: {result}")  # Output: 1
