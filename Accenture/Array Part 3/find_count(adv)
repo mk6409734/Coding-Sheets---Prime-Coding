@@ -1,0 +1,31 @@
+Questions:
+You are given a function, int findCount(int arr[], int length, nt num; int diff); The function accepts an integer array 'arr', its length and two integer variables 'num' and 'diff'. Implement this function tofind and return the number of elements of 'arr' having an absolute difference of less than or equal to 'diff' with 'num'. Note In case there is no element in 'arr' whose absolute difference with 'num' is less than or equal to 'diff', return -1. Example Input: arr: 12 3 14 56 77 13 num: 13 diff: 2 Output: 3
+
+def find_count(arr, num, diff):
+    # Check if the array is None
+    if arr is None:
+        return -1
+    
+    count = 0
+
+    # Iterate through the array
+    for element in arr:
+        # Calculate the absolute difference
+        abs_diff = abs(element - num)
+        # Check if the absolute difference is less than or equal to diff
+        if abs_diff <= diff:
+            count += 1
+
+    # If no such elements found, return -1
+    if count == 0:
+        return -1
+
+    return count
+
+# Example usage
+if __name__ == "__main__":
+    arr = [12, 3, 14, 56, 77, 13]
+    num = 13
+    diff = 2
+    result = find_count(arr, num, diff)
+    print(f"Output: {result}")  # Output: 3
