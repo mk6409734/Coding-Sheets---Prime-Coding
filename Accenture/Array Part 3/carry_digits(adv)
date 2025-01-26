@@ -1,0 +1,43 @@
+Question:
+A carry is a digit that is transferred to left if sum of digits exceeds 9 while
+adding two numbers from right-to-left one digit at a time.
+You are required to implement the following function.
+Int NumberOfCarries(int numl , int num2);
+The function accepts two numbers 'numl' and 'num2' as its arguments. You
+are required to calculate and return the total number of carries generated
+while adding digits of two numbers 'numl' and ' num2'.
+Assumption
+numl,
+Example
+Input
+Num 1: 451
+Num 2: 349
+Output
+2
+
+def NumberOfCarries(num1, num2):
+    carry = 0
+    carry_count = 0
+    
+    while num1 > 0 or num2 > 0:
+        digit1 = num1 % 10
+        digit2 = num2 % 10
+        
+        sum_digits = digit1 + digit2 + carry
+        
+        if sum_digits > 9:
+            carry = sum_digits // 10
+            carry_count += 1
+        else:
+            carry = 0
+        
+        num1 //= 10
+        num2 //= 10
+    
+    return carry_count
+
+# Example usage
+num1 = 451
+num2 = 349
+result = NumberOfCarries(num1, num2)
+print(f"The total number of carries generated while adding {num1} and {num2} is: {result}")
