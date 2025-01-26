@@ -1,0 +1,46 @@
+Question:
+N-base notation is a system for writing numbers that uses only n different
+symbols. These symbols are the first n symbols from the given notation
+list(lncluding the symbol for o)
+Decimal to n base notation are (0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9,
+and so on upto 35:Z).
+Implement the following function
+Char* DectoNBase(int n, int num):
+The function accept positive integer n and num Implement the function to
+calculate the n-base equivalent of num and return the same as a string
+Steps:
+Divide the decimal number by n, Treat the division as the integer division
+Write the the remainder (in n-base notation)
+Divide the quotient again by n, Treat the division as integer division
+Repeat step 2 and 3 until the quotient is O
+The n-base value is the sequence of the remainders from last to first
+
+Assumption
+Example
+Input
+n: 12
+num: 718
+Output
+4BA
+
+def decto_nbase(n, num):
+    symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if n < 2 or n > 36:
+        return None
+    
+    result = ""
+    
+    while num > 0:
+        result = symbols[num % n] + result
+        num //= n
+    
+    return result
+
+# Example usage
+n = 12
+num = 718
+result = decto_nbase(n, num)
+if result is not None:
+    print(f"The n-base notation of {num} in base {n} is: {result}")
+else:
+    print("Invalid base!")
